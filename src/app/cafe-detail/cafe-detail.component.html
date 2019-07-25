@@ -1,9 +1,9 @@
-<div *ngIf="selectedCafe">
-	<h2>{{selectedCafe.name}} cafecito</h2>
-	<div><span>id: </span>{{selectedCafe.id}}</div>
+<div *ngIf="cafe">
+	<h2>{{cafe.name}} cafecito</h2>
+	<div><span>id: </span>{{cafe.id}}</div>
 	<div>
 		<label>nombre:
-			<input [(ngModel)]="selectedCafe.name" placeholder="name"/>
+			<input [(ngModel)]="cafe.name" placeholder="name"/>
 		</label>
 	</div>
 </div>
