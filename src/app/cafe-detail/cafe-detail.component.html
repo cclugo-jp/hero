@@ -1,0 +1,9 @@
+<div *ngIf="selectedCafe">
+	<h2>{{selectedCafe.name}} cafecito</h2>
+	<div><span>id: </span>{{selectedCafe.id}}</div>
+	<div>
+		<label>nombre:
+			<input [(ngModel)]="selectedCafe.name" placeholder="name"/>
+		</label>
+	</div>
+</div>

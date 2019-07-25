@@ -1,0 +1,12 @@
+
+
+<h2>cafeses</h2>
+<ul class="cafes">
+	<li *ngFor="let cafe of cafes"
+		[class.selected]="cafe === selectedCafe"
+		(click)="onSelect(cafe)">
+		<span class="badge">{{cafe.id}}</span> {{cafe.name}}
+	</li>
+</ul>
+
+<app-cafe-detail [cafe]='selectedCafe'></app-cafe-detail>
