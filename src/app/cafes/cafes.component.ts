@@ -14,11 +14,6 @@ export class CafesComponent implements OnInit {
   ngOnInit() {
   }
 
-  cafe: Cafe = {
-  	id: 1,
-  	name: 'marron'
-  }
-
   cafes = CAFES;
 
   selectedCafe: Cafe;
