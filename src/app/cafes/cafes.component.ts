@@ -17,11 +17,6 @@ export class CafesComponent implements OnInit {
 
   cafes: Cafe[];
 
-  selectedCafe: Cafe;
-  onSelect(cafe: Cafe): void {
-  	this.selectedCafe = cafe;
-  }
-
   getCafes(): void {
   	this.cafeService.getCafes().subscribe(cafes => this.cafes = cafes);
   }

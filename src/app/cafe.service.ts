@@ -15,4 +15,8 @@ export class CafeService {
   	this.messageService.add('cachifa: cafes encontrados');
   	return of (CAFES);
   }
+  getCafe(id: number): Observable<Cafe> {
+  	this.messageService.add(`cachifa: cafe encontrado id = ${id}`);
+  	return of (CAFES.find(cafe => cafe.id === id));
+  }
 }

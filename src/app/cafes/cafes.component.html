@@ -1,9 +1,10 @@
 <h2>cafeses</h2>
 <ul class="cafes">
-	<li *ngFor="let cafe of cafes"
-		[class.selected]="cafe === selectedCafe"
-		(click)="onSelect(cafe)">
-		<span class="badge">{{cafe.id}}</span> {{cafe.name}}
+	<li *ngFor="let cafe of cafes">
+		<a routerLink='/detail/{{cafe.id}}'>
+			<span class='badge'>{{cafe.id}}</span>
+			{{cafe.name}}
+		</a>
 	</li>
 </ul>
 
