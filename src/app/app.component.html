@@ -1,9 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <p>
-    {{ title }}
-  </p>
-  <app-cafes></app-cafes>
+  <p>{{ title }}</p>
+  <nav>
+  	<a routerLink='/cafes'>cafeses</a>
+  </nav>
+  <router-outlet></router-outlet>
   <app-messages></app-messages>
 </div>
 
