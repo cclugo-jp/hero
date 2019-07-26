@@ -23,7 +23,7 @@ export class CafesComponent implements OnInit {
   }
 
   getCafes(): void {
-  	this.cafes = this.cafeService.getCafes();
+  	this.cafeService.getCafes().subscribe(cafes => this.cafes = cafes);
   }
 
 }
