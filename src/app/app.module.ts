@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { CafesComponent } from './cafes/cafes.component';
 import { FormsModule } from '@angular/forms';
 import { CafeDetailComponent } from './cafe-detail/cafe-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CafesComponent,
-    CafeDetailComponent
+    CafeDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

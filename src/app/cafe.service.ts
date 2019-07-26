@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { Cafe } from './cafe';
 import { CAFES } from './mock-cafes';
 import { Observable, of } from 'rxjs';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CafeService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   getCafes(): Observable<cafe[]> {
+  	this.messageService.add('cachifa: cafes encontrados');
   	return of (CAFES);
   }
 }
