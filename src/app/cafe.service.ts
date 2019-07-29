@@ -55,6 +55,16 @@ export class CafeService {
       );
   }
 
+  deleteCafe (cafe: Cafe | number): Observable<Cafe> {
+  const id = typeof cafe === 'number' ? cafe : cafe.id;
+  const url = `${this.cafesUrl}/${id}`;
+  return this.http.delete<Cafe>(url, this.httpOptions)
+    .pipe(
+      tap(_ => this.log(`cafe borrado id=${id}`)),
+      catchError(this.handleError<Cafe>('deleteCafe'))
+    );
+  }
+
  /**
  * Handle Http operation that failed.
  * Let the app continue.

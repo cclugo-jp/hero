@@ -28,4 +28,9 @@ export class CafesComponent implements OnInit {
       .subscribe(cafe => { this.cafes.push(cafe); });
   }
 
+  delete(cafe: Cafe): void {
+    this.cafes = this.cafes.filter(h => h !== cafe);
+    this.cafeService.deleteCafe(cafe).subscribe();
+  }
+
 }
