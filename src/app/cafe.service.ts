@@ -11,7 +11,7 @@ export class CafeService {
 
   constructor(private messageService: MessageService) { }
 
-  getCafes(): Observable<cafe[]> {
+  getCafes(): Observable<Cafe[]> {
   	this.messageService.add('cachifa: cafes encontrados');
   	return of (CAFES);
   }
