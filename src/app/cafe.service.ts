@@ -1,22 +1,58 @@
 import { Injectable } from '@angular/core';
 import { Cafe } from './cafe';
-import { CAFES } from './mock-cafes';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CafeService {
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private http: HttpClient) { }
 
   getCafes(): Observable<Cafe[]> {
-  	this.messageService.add('cachifa: cafes encontrados');
-  	return of (CAFES);
+  	return this.http.get<Cafe[]>(this.cafesUrl)
+      .pipe(
+        tap(_ => this.log('cafes encontraos')),
+        catchError(this.handleError<Cafe[]>('getCafes',[]))
+      );
   }
   getCafe(id: number): Observable<Cafe> {
-  	this.messageService.add(`cachifa: cafe encontrado id = ${id}`);
-  	return of (CAFES.find(cafe => cafe.id === id));
+  	const url = `${this.cafesUrl}/${id}`;
+    return this.http.get<Cafe>(url)
+      .pipe(
+        tap(_ => this.log(`cafe encontrao id=${id}`)),
+        catchError(this.handleError<Cafe>(`getCafe id=${id}`))
+      );
   }
+
+  /** log a CafeService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`cachifa: ${message}`);
+  }
+
+  private cafesUrl = 'api/cafes'; //url to web api
+
+ /**
+ * Handle Http operation that failed.
+ * Let the app continue.
+ * @param operation - name of the operation that failed
+ * @param result - optional value to return as the observable result
+ */
+private handleError<T> (operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+    // TODO: send the error to remote logging infrastructure
+    console.error(error); // log to console instead
+
+    // TODO: better job of transforming error for user consumption
+    this.log(`${operation} failed: ${error.message}`);
+
+    // Let the app keep running by returning an empty result.
+    return of(result as T);
+  };
+}
+
 }
