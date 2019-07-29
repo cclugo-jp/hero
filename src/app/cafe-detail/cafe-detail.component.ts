@@ -32,4 +32,8 @@ export class CafeDetailComponent implements OnInit {
   	this.location.back();
   }
 
+  save(): void {
+    this.cafeService.updateCafe(this.cafe).subscribe(() => this.goBack());
+  }
+
 }

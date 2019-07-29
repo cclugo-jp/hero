@@ -35,6 +35,18 @@ export class CafeService {
 
   private cafesUrl = 'api/cafes'; //url to web api
 
+  updateCafe (cafe: Cafe): Observable<any> {
+    return this.http.put(this.cafesUrl, cafe,this.httpOptions)
+      .pipe(
+        tap(_ => this.log(`cafe id=${cafe.id} fue actualizado`)),
+        catchError(this.handleError<any>('updateCafe'))
+      );
+  }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
  /**
  * Handle Http operation that failed.
  * Let the app continue.
