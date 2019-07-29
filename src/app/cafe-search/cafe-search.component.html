@@ -1,0 +1,11 @@
+<div id="search-component">
+	<h4><label for="search-box">busqueda de cafes</label></h4>
+	<input #searchBox id="search-box" (input)="search(searchBox.value)" />
+	<ul class="search-result">
+		<!-- el simbolo de dolar en cafes$ es para resaltar que se trata de un observable, no de un array 
+			async es para subscribir automaticamente el observable, y no sera necesario registrarlo en el ts -->
+		<li *ngFor="let cafe of cafes$ | async" > 
+			<a routerLink="/detail/{{cafe.id}}">{{cafe.name}}</a>
+		</li>
+	</ul>
+</div>

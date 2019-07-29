@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 // very much fake api server
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { CafeSearchComponent } from './cafe-search/cafe-search.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     CafesComponent,
     CafeDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    CafeSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -65,6 +65,18 @@ export class CafeService {
     );
   }
 
+  searchCafes(term: string): Observable<Cafe[]> {
+    if (!term.trim()) {
+      // if not search term, return empty cafe array
+      return of ([]);
+    }
+    return this.http.get<Cafe[]>(`${this.cafesUrl}/?name=${term}`)
+      .pipe(
+        tap(_ => this.log(`resultado de cafes por "${term}"`)),
+        catchError(this.handleError<Cafe[]>('searchCafes', []))
+      );
+  }
+
  /**
  * Handle Http operation that failed.
  * Let the app continue.

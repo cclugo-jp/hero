@@ -1,3 +1,4 @@
+<p>cafeses top</p>
 <div class='grid grid-pad'>
 	<a *ngFor='let cafe of cafes' class='col-1-4' routerLink='/detail/{{cafe.id}}'>
 		<div class='module cafe'>
@@ -5,3 +6,5 @@
 		</div>
 	</a>
 </div>
+
+<app-cafe-search></app-cafe-search>
