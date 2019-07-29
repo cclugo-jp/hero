@@ -21,4 +21,11 @@ export class CafesComponent implements OnInit {
   	this.cafeService.getCafes().subscribe(cafes => this.cafes = cafes);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.cafeService.addCafe({ name} as Cafe)
+      .subscribe(cafe => { this.cafes.push(cafe); });
+  }
+
 }

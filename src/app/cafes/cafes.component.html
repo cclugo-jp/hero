@@ -9,3 +9,11 @@
 </ul>
 
 <app-cafe-detail [cafe]='selectedCafe'></app-cafe-detail>
+
+<div>
+	<label>nombre del nuevo cafe: 
+		<input #cafeName />
+	</label>
+	<!-- (click) pasa el input value a add() y luego limpia el input -->
+	<button (click)='add(cafeName.value); cafeName.value=""'>add</button>
+</div>

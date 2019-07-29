@@ -47,6 +47,14 @@ export class CafeService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  addCafe (cafe: Cafe): Observable<Cafe> {
+    return this.http.post<Cafe>(this.cafesUrl, cafe, this.httpOptions)
+      .pipe(
+        tap((newCafe: Cafe) => this.log(`cafe agregado con id=${newCafe.id}`)),
+        catchError(this.handleError<Cafe>('addCafe'))
+      );
+  }
+
  /**
  * Handle Http operation that failed.
  * Let the app continue.
