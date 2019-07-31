@@ -23,10 +23,10 @@ export class InMemoryDataService implements InMemoryDbService {
 
   // Overrides the genId method to ensure that a cafe always has an id.
   // If the cafes array is empty,
-  // the method below returns the initial number (11).
+  // the method below returns the initial number (1).
   // if the cafes array is not empty, the method below returns the highest
   // cafe id + 1.
   genId(cafes: Cafe[]): number {
-    return cafes.length > 0 ? Math.max(...cafes.map(cafe => cafe.id)) + 1 : 11;
+    return cafes.length > 0 ? Math.max(...cafes.map(cafe => cafe.id)) + 1 : 1;
   }
 }
